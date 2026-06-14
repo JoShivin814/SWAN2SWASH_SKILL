@@ -1,0 +1,29 @@
+$*************HEADING****************************************
+$
+PROJECT 'T079' '1' 'Port Wave Simulation'
+$
+SET depmin 0.01
+$
+CGRID REG 0.675 0 0 1798.65 1392.3 540 424 CIRCLE 36 0.04 1.0 34
+$
+INPGRID BOTTOM REG 0.675 0 0 571 442 3.15 3.15 EXC -99
+READINP BOTTOM 45. '2BB1v4_bot_gridmodify4i.bot' 4 0 FREE
+$
+BOUND SHAPE JONSWAP PEAK DSPR POWER
+BOUNDSPEC SEGMENT XY 45.0 0.0 1755.0 0.0 CONSTANT PAR 4.7556 9.9952 90.0 2.0
+$
+GEN3
+OFF QUAD
+FRIC JONSWAP 0.01
+BREAKING
+$
+POINTS 'buoy' FILE '2bb1v4.loc'
+TABLE 'buoy' HEAD '2bb1v4_hs.tbl' XP YP HS
+TABLE 'buoy' HEAD '2bb1v4_tm01.tbl' XP YP TM01
+TABLE 'buoy' HEAD '2bb1v4_dir.tbl' XP YP DIR
+TABLE 'buoy' HEAD '2bb1v4_rtp.tbl' XP YP RTP
+$
+BLOCK HEAD '2bb1v4_blk.tbl' XP YP HS TM01
+$
+COMPUTE
+STOP
